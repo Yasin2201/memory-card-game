@@ -7,18 +7,30 @@ const Gameplay = props => {
 
     const updateScore = (e) => {
         setCurrScore([...currScore, e.target.id])
-        // console.log(currScore)
+    }
+
+    const checkScore = (e) => {
+        const alreadyClicked = currScore.find((item) => { return item === e.target.id })
+        if (alreadyClicked) {
+            console.log("gameover")
+            setCurrScore([])
+        }
+    }
+
+    const play = (e) => {
+        updateScore(e)
+        checkScore(e)
     }
     // console.log(props)
-    console.log(currScore)
+    // console.log(currScore)
     return (
         <div>
-            <h2>Score: {currScore.length}</h2>
+            <h2>Score: {currScore.length} || High Score: 0</h2>
             <div id="displayCards">
                 {props.cards.map((card) => {
                     return (
                         <div key={uniqid()} className="card">
-                            <img src={card.image} alt={card.name} id={card.id} onClick={updateScore} />
+                            <img src={card.image} alt={card.name} id={card.id} onClick={play} />
                             <h3 className="charInfo">{card.name}</h3>
                         </div>
                     )
