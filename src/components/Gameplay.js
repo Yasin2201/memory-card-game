@@ -4,6 +4,7 @@ import "./styles/display.css"
 
 const Gameplay = props => {
     const [currScore, setCurrScore] = useState([])
+    const [highScore, setHighScore] = useState(0)
 
     const updateScore = (e) => {
         setCurrScore([...currScore, e.target.id])
@@ -13,6 +14,9 @@ const Gameplay = props => {
         const alreadyClicked = currScore.find((item) => { return item === e.target.id })
         if (alreadyClicked) {
             console.log("gameover")
+            if (currScore.length > highScore) {
+                setHighScore(currScore.length)
+            }
             setCurrScore([])
         }
     }
@@ -21,11 +25,9 @@ const Gameplay = props => {
         updateScore(e)
         checkScore(e)
     }
-    // console.log(props)
-    // console.log(currScore)
     return (
         <div>
-            <h2>Score: {currScore.length} || High Score: 0</h2>
+            <h2>Score: {currScore.length} || High Score: {highScore}</h2>
             <div id="displayCards">
                 {props.cards.map((card) => {
                     return (
