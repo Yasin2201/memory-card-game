@@ -15,6 +15,15 @@
     text-align: center;
 }
 
+.card:hover {
+    box-shadow: 1px 1px 10px black;
+}
+
 .charInfo {
     margin: 2px;
+}
+
+#scoreCard {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(219, 219, 219);
 }
