@@ -12,8 +12,8 @@ const Gameplay = props => {
 
     const checkScore = (e) => {
         const alreadyClicked = currScore.find((item) => { return item === e.target.id })
+        //Restarts Game
         if (alreadyClicked) {
-            console.log("gameover")
             if (currScore.length > highScore) {
                 setHighScore(currScore.length)
             }
@@ -21,18 +21,25 @@ const Gameplay = props => {
         }
     }
 
-    const play = (e) => {
+    //Randomizes Cards onClick
+    const randomize = (characters) => {
+        const randomizedChars = characters.sort(() => Math.random() - 0.5)
+        return randomizedChars
+    }
+
+    const updateScoreBoard = (e) => {
         updateScore(e)
         checkScore(e)
     }
+
     return (
         <div>
-            <h2>Score: {currScore.length} || High Score: {highScore}</h2>
+            <h2 id="scoreCard">Score: {currScore.length} || High Score: {highScore}</h2>
             <div id="displayCards">
-                {props.cards.map((card) => {
+                {randomize(props.cards).map((card) => {
                     return (
                         <div key={uniqid()} className="card">
-                            <img src={card.image} alt={card.name} id={card.id} onClick={play} />
+                            <img src={card.image} alt={card.name} id={card.id} onClick={updateScoreBoard} />
                             <h3 className="charInfo">{card.name}</h3>
                         </div>
                     )
