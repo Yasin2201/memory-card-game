@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+}
+.App {
+    background-color: #40916c;
+    text-align: center;
+}
+
+#title {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: whitesmoke;
+    margin: 0;
+    font-size: 50px;
+}
