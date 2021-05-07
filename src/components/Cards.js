@@ -3,11 +3,12 @@ import Gameplay from "./Gameplay"
 
 const Cards = () => {
     const [char, setChar] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     //Gets characters on component mount
     useEffect(() => {
         const getRick = async () => {
+            setLoading(true)
             try {
                 const characters = [1, 2, 3, 4, 5, 6, 7, 8]
                 const response = await fetch(`https://rickandmortyapi.com/api/character/${characters}`)
@@ -18,6 +19,7 @@ const Cards = () => {
                 return data
             } catch {
                 console.error("Error")
+                setLoading(false)
             }
         }
         getRick()
